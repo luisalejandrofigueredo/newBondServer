@@ -16,19 +16,77 @@ nodeRouter.use((req, res, next) => {
     next();
   });
 
+  nodeRouter.put('/update', async (req: Request, res: Response) => {
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const {name,net,description,visible,x,y}=req.body.data
+      const nodeRepository=AppDataSource.getRepository(Node);
+      const node=await nodeRepository.findOneBy({id:id});
+      node.name=name;
+      node.net=net;
+      node.description=description;
+      node.visible=visible;
+      node.x=x;
+      node.y=y;
+      nodeRepository.save(node).then((updateNode)=>{
+        res.status(200).json(updateNode);
+      });
+    } catch (error) {
+      res.status(500).json({ status: "Internal server error" });
+    }
+  });
 
-  nodeRouter.post('/addNode', async (req: Request, res: Response) => {
-    let node =new Node();
-    const {name,net,description,visible,x,y}=req.body.data
-    node.name=name;
-    node.net=net;
-    node.description=description;
-    node.visible=visible;
-    node.x=x;
-    node.y=y;
-    await AppDataSource.manager.save(node).then((response)=>{
-      res.status(200).json(response);
-    });
+  nodeRouter.post('/add', async (req: Request, res: Response) => {
+    try {
+      let node =new Node();
+      const {name,net,description,visible,x,y}=req.body.data
+      node.name=name;
+      node.net=net;
+      node.description=description;
+      node.visible=visible;
+      node.x=x;
+      node.y=y;
+      await AppDataSource.manager.save(node).then((response)=>{
+        res.status(200).json(response);
+      });
+    } catch (error) {
+      res.status(500).json({ status: "Internal server error" });
+    }
    });
+
+   nodeRouter.get('/getOneById', async (req: Request, res: Response) => {
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const nodeRepository=AppDataSource.getRepository(Node);
+      const node=await nodeRepository.findOneBy({id:id});
+      res.status(200).json(node);
+    } catch (error) {
+      res.status(500).json({ status: "Internal server error" });
+    }
+  });
+
+  nodeRouter.get('/getAll', async (req: Request, res: Response) => {
+    try {
+      const nodeRepository=AppDataSource.getRepository(Node);
+      const node=await nodeRepository.find();
+      res.status(200).json(node);
+    } catch (error) {
+      res.status(500).json({ status: "Internal server error" });
+    }
+  });
+
+  nodeRouter.delete('/delete', async (req: Request, res: Response) => {
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const nodeRepository=AppDataSource.getRepository(Node);
+      const node=await nodeRepository.findOneBy({id:id});
+      nodeRepository.remove(node).then((nodeRemoved)=>{
+        res.status(200).json(nodeRemoved);
+      })
+    } catch (error) {
+      res.status(500).json({ status: "Internal server error" });
+    }
+  });
+  
 
   export { nodeRouter};
