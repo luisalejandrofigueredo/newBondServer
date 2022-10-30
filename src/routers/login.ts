@@ -38,8 +38,8 @@ loginRouter.post('/login', async (req: Request, res: Response) => {
         }
         const result= await bcrypt.compare(password,user.password);
         if (result===true){
-            jwt.sign({login:login},privateKey,{expiresIn:"60 days"});
-            res.status(200).json({ message: "Logged" });
+            const webToken=jwt.sign({login:login,ip:req.ip,url:req.originalUrl},privateKey,{expiresIn:"60 days"});
+            res.status(200).json({ webToken:webToken });
             return;
         } else {
             logger.info(`Possible hacker attack in login ${req.ip} bad password ${login}`);

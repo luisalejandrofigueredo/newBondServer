@@ -2,10 +2,9 @@ import yargs, { describe, options } from 'yargs'
 import express, { Request, Response } from 'express';
 import { argv } from 'node:process';
 import moment from '../../node_modules/moment/moment';
-import { AppDataSource } from "../data-source"
-import { Node } from "../entity/Node"
-
-
+import { AppDataSource } from "../data-source";
+import { Node } from "../entity/Node";
+import { logger } from "../utils/utils";
 
 const nodeRouter = express.Router();
 nodeRouter.use((req, res, next) => {
@@ -33,6 +32,7 @@ nodeRouter.use((req, res, next) => {
         res.status(200).json(updateNode);
       });
     } catch (error) {
+      logger.info(`Internal server error in node update`,error);
       res.status(500).json({ status: "Internal server error" });
     }
   });
@@ -51,6 +51,7 @@ nodeRouter.use((req, res, next) => {
         res.status(200).json(response);
       });
     } catch (error) {
+      logger.info(`Internal server error in node add`,error);
       res.status(500).json({ status: "Internal server error" });
     }
    });
@@ -62,6 +63,7 @@ nodeRouter.use((req, res, next) => {
       const node=await nodeRepository.findOneBy({id:id});
       res.status(200).json(node);
     } catch (error) {
+      logger.info(`Internal server error in node getOneById`,error);
       res.status(500).json({ status: "Internal server error" });
     }
   });
@@ -72,6 +74,7 @@ nodeRouter.use((req, res, next) => {
       const node=await nodeRepository.find();
       res.status(200).json(node);
     } catch (error) {
+      logger.info(`Internal server error in node getAll`,error);
       res.status(500).json({ status: "Internal server error" });
     }
   });
@@ -85,6 +88,7 @@ nodeRouter.use((req, res, next) => {
         res.status(200).json(nodeRemoved);
       })
     } catch (error) {
+      logger.info(`Internal server error in node delete`,error);
       res.status(500).json({ status: "Internal server error" });
     }
   });
