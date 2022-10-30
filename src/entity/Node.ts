@@ -1,11 +1,12 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Index } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Index, ManyToOne } from "typeorm"
 import { Relation } from "../entity/Relation";
+import { Project } from "./Project";
 @Entity()
 export class Node {
 
     @PrimaryGeneratedColumn()
     id: number
-    
+
     @Index({ unique: true })
     @Column()
     name: string
@@ -30,5 +31,8 @@ export class Node {
 
     @OneToMany(() => Relation, (relation) => relation.to) 
     relationsTo: Relation[]
+
+    @ManyToOne(()=> Project,(project)=>project.project)
+    project:Project
 
 }

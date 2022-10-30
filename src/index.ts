@@ -5,6 +5,8 @@ import express, { Express, Request, Response } from 'express';
 import { nodeRouter } from "./routers/node";
 import cors from 'cors'
 import dotenv from 'dotenv';
+import bcrypt from 'bcrypt';
+import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 dotenv.config();
 
 global.argv= yargs(process.argv.slice(2)).option({
