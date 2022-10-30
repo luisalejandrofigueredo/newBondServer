@@ -24,6 +24,7 @@
       "mysql": "^2.14.1",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.10",
+      "winston": "^3.8.2",
       "yargs": "^17.6.0"
    },
    "scripts": {

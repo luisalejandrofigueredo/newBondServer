@@ -4,13 +4,15 @@ import { Project } from "./Project";
 export class User {
     @PrimaryGeneratedColumn()
     id: number
+    @Column()
+    name: string
+    @Column()
+    login: string
+    @Column()
+    password: string
+    @Column()
+    try: number
 
-    name:string
-
-    login:string
-
-    password:string
-
-    @OneToMany(() => Project, (project) => project.project) 
+    @OneToMany(() => Project, (project) => project.project)
     project: Project[]
 }

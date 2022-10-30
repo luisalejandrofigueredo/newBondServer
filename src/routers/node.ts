@@ -1,12 +1,13 @@
 import yargs, { describe, options } from 'yargs'
 import express, { Request, Response } from 'express';
 import { argv } from 'node:process';
-const nodeRouter = express.Router();
 import moment from '../../node_modules/moment/moment';
 import { AppDataSource } from "../data-source"
 import { Node } from "../entity/Node"
 
 
+
+const nodeRouter = express.Router();
 nodeRouter.use((req, res, next) => {
     if (!global.argv.nm) {
       const date = moment(Date.now());

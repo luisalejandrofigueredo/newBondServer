@@ -3,10 +3,15 @@ import { AppDataSource } from "./data-source"
 import { Node } from "./entity/Node"
 import express, { Express, Request, Response } from 'express';
 import { nodeRouter } from "./routers/node";
+import { loginRouter } from "./routers/login";
 import cors from 'cors'
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
+
+
+
+
 dotenv.config();
 
 global.argv= yargs(process.argv.slice(2)).option({
@@ -22,6 +27,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors({ origin: '*' }));
 app.use('/node', nodeRouter);
+app.use('/login', loginRouter);
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
