@@ -1,10 +1,11 @@
 import yargs, { options } from 'yargs'
 import { AppDataSource } from "./data-source"
-import { Node } from "./entity/Node"
 import express, { Express, Request, Response } from 'express';
 import { nodeRouter } from "./routers/node";
 import { loginRouter } from "./routers/login";
-import {testRouter} from './routers/test'
+import {testRouter} from './test/test';
+import * as https from "https";
+
 import cors from 'cors'
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
@@ -29,7 +30,9 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
+/**Comment this line for production */
 app.use('/test', testRouter);
+/*https.createServer({key:'',cert:''},app)*/
 
 
 app.get('/', (req: Request, res: Response) => {

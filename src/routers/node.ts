@@ -30,8 +30,9 @@ nodeRouter.use((req:Request, _res:Response, next) => {
 
     jwt.verify(token, privateKey, (err: any, data: any) => {
       if (err){
-        logger.info(`Authorization error`,err);
-      } return res.sendStatus(403)
+       logger.info(`Authorization error`,err);
+       return res.sendStatus(403)
+      }
       next()
     })
   });

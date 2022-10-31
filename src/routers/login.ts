@@ -8,7 +8,7 @@ import { User } from '../entity/User';
 import * as bcrypt  from 'bcrypt'
 import * as jwt from 'jsonwebtoken';
 import fs from 'fs';
-var privateKey = fs.readFileSync('config/private.key');
+const privateKey = fs.readFileSync('config/private.key');
 const loginRouter = express.Router();
 
 loginRouter.use((req, res, next) => {
@@ -46,7 +46,7 @@ loginRouter.post('/login', async (req: Request, res: Response) => {
             res.status(200).json({ webToken:webToken });
             return;
         } else {
-            logger.info(`Possible hacker attack in login ${req.ip} bad password ${login}`);
+            logger.info(`Possible hacker attack in login ${req.ip} bad password for  ${login}`);
             user.try++;
             nodeRepository.save(user);
             res.status(401).json({ message: "Unauthorized bad login or password"});

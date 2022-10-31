@@ -1,7 +1,7 @@
 import yargs, { describe, options } from 'yargs'
 import express, { Request, Response } from 'express';
 import { argv } from 'node:process';
-import moment from '../../node_modules/moment/moment';
+import moment from 'moment/moment';
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
 import * as bcrypt  from 'bcrypt'
