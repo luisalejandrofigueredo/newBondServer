@@ -1,19 +1,39 @@
 import yargs, { describe, options } from 'yargs'
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { argv } from 'node:process';
 import moment from '../../node_modules/moment/moment';
 import { AppDataSource } from "../data-source";
 import { Node } from "../entity/Node";
 import { logger } from "../utils/utils";
+import fs from 'fs';
+import * as jwt from 'jsonwebtoken';
 
 const nodeRouter = express.Router();
-nodeRouter.use((req, res, next) => {
+var privateKey = fs.readFileSync('config/private.key');
+nodeRouter.use((req:Request, _res:Response, next) => {
     if (!global.argv.nm) {
       const date = moment(Date.now());
       console.log('/node', req.url)
       console.log('Time: ', date.format("dddd, MMMM Do YYYY, h:mm:ss a"));
     }
     next();
+  });
+
+  nodeRouter.use((req:Request, res:Response, next)=>{
+    const authHeader = req.headers['authorization']
+    const token = authHeader && authHeader.split(' ')[1]
+    if (token == null)
+    {
+      logger.info(`Request without token in node possible hacker attack`);
+      return res.sendStatus(401)  
+    } 
+
+    jwt.verify(token, privateKey, (err: any, data: any) => {
+      if (err){
+        logger.info(`Authorization error`,err);
+      } return res.sendStatus(403)
+      next()
+    })
   });
 
   nodeRouter.put('/update', async (req: Request, res: Response) => {

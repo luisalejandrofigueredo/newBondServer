@@ -1,5 +1,5 @@
 import yargs, { describe, env, options } from 'yargs'
-import express, { Request, response, Response } from 'express';
+import express, { Request, Response } from 'express';
 import { argv } from 'node:process';
 import moment from '../../node_modules/moment/moment';
 import { AppDataSource } from "../data-source"
@@ -23,17 +23,21 @@ loginRouter.use((req, res, next) => {
 loginRouter.post('/login', async (req: Request, res: Response) => {
     const { login, password } = req.body
     try {
-        console.log(`Login ${login} body`,req.body);
         if (login === undefined || password === undefined) {
             logger.info(`Possible hacker attack in login ${req.ip}`);
             res.status(400).json({ message: 'Bad request' })
             return;
         }
         const nodeRepository = AppDataSource.getRepository(User);
-        const user = await nodeRepository.findOneBy({name:login});
+        const user = await nodeRepository.findOneBy({login:login});
         if (user===null){
             logger.info(`Possible hacker attack in login ${req.ip} bad login ${login}`);
             res.status(401).json({ message: "Unauthorized bad login or password"})
+            return;
+        }
+        if (user.try>5){
+            logger.info(`User disabled max login ${req.ip} b${login}`);
+            res.status(401).json({ message: "Unauthorized"})
             return;
         }
         const result= await bcrypt.compare(password,user.password);
@@ -43,7 +47,9 @@ loginRouter.post('/login', async (req: Request, res: Response) => {
             return;
         } else {
             logger.info(`Possible hacker attack in login ${req.ip} bad password ${login}`);
-            res.status(401).json({ message: "Unauthorized bad login or password"})
+            user.try++;
+            nodeRepository.save(user);
+            res.status(401).json({ message: "Unauthorized bad login or password"});
             return;
         }
     } catch (error) {

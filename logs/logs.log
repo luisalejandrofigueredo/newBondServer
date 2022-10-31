@@ -18,3 +18,14 @@
 [2022-10-30T20:27:52.769Z] Winston info: Possible hacker attack in login ::1 bad login hola mudno
 [2022-10-30T20:31:48.181Z] Winston info: Possible hacker attack in login ::1 bad login hola mudno
 [2022-10-30T20:32:21.902Z] Winston info: Possible hacker attack in login ::1 bad login hola mudno
+[2022-10-30T22:37:55.110Z] Winston info: Internal server error in test add user ER_NO_DEFAULT_FOR_FIELD: Field 'name' doesn't have a default value
+[2022-10-30T23:03:34.894Z] Winston info: Possible hacker attack in login ::1 bad login root
+[2022-10-30T23:06:17.796Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:11:12.060Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:20:06.129Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:24:56.984Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:25:26.770Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:25:36.183Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:25:47.254Z] Winston info: Possible hacker attack in login ::1 bad password root
+[2022-10-30T23:25:58.092Z] Winston info: User disabled max login ::1 broot
+[2022-10-30T23:26:20.686Z] Winston info: Possible hacker attack in login ::1 bad password root

@@ -4,6 +4,7 @@ import { Node } from "./entity/Node"
 import express, { Express, Request, Response } from 'express';
 import { nodeRouter } from "./routers/node";
 import { loginRouter } from "./routers/login";
+import {testRouter} from './routers/test'
 import cors from 'cors'
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
@@ -28,6 +29,8 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
+app.use('/test', testRouter);
+
 
 app.get('/', (req: Request, res: Response) => {
   res.send('Express + TypeScript Server');
