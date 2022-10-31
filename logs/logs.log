@@ -33,3 +33,40 @@
 [2022-10-31T08:25:51.732Z] Winston info: Request without token in node possible hacker attack
 [2022-10-31T08:51:34.436Z] Winston info: Request without token in node possible hacker attack
 [2022-10-31T08:51:52.039Z] Winston info: Request without token in node possible hacker attack
+[2022-10-31T14:05:23.426Z] Winston info: Error %s from ip:%s
+[2022-10-31T14:08:53.393Z] Winston info: Error from IP ::ffff:127.0.0.1
+[2022-10-31T14:08:53.401Z] Winston info: Error SyntaxError: Unexpected token G in JSON at position 54
+    at JSON.parse (<anonymous>)
+    at parse (d:\newBondServer\node_modules\body-parser\lib\types\json.js:89:19)
+    at d:\newBondServer\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (async_hooks.js:197:9)
+    at invokeCallback (d:\newBondServer\node_modules\raw-body\index.js:231:16)
+    at done (d:\newBondServer\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (d:\newBondServer\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (events.js:412:35)
+    at IncomingMessage.emit (domain.js:470:12)
+    at endReadableNT (internal/streams/readable.js:1317:12)
+[2022-10-31T14:08:55.435Z] Winston info: Error from IP ::ffff:127.0.0.1
+[2022-10-31T14:08:55.436Z] Winston info: Error SyntaxError: Unexpected token G in JSON at position 54
+    at JSON.parse (<anonymous>)
+    at parse (d:\newBondServer\node_modules\body-parser\lib\types\json.js:89:19)
+    at d:\newBondServer\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (async_hooks.js:197:9)
+    at invokeCallback (d:\newBondServer\node_modules\raw-body\index.js:231:16)
+    at done (d:\newBondServer\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (d:\newBondServer\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (events.js:412:35)
+    at IncomingMessage.emit (domain.js:470:12)
+    at endReadableNT (internal/streams/readable.js:1317:12)
+[2022-10-31T14:08:57.452Z] Winston info: Error from IP ::ffff:127.0.0.1
+[2022-10-31T14:08:57.452Z] Winston info: Error SyntaxError: Unexpected token G in JSON at position 54
+    at JSON.parse (<anonymous>)
+    at parse (d:\newBondServer\node_modules\body-parser\lib\types\json.js:89:19)
+    at d:\newBondServer\node_modules\body-parser\lib\read.js:128:18
+    at AsyncResource.runInAsyncScope (async_hooks.js:197:9)
+    at invokeCallback (d:\newBondServer\node_modules\raw-body\index.js:231:16)
+    at done (d:\newBondServer\node_modules\raw-body\index.js:220:7)
+    at IncomingMessage.onEnd (d:\newBondServer\node_modules\raw-body\index.js:280:7)
+    at IncomingMessage.emit (events.js:412:35)
+    at IncomingMessage.emit (domain.js:470:12)
+    at endReadableNT (internal/streams/readable.js:1317:12)

@@ -8,6 +8,5 @@ content-type: application/json
 
 GET localhost:3000/node/getOneById?id=1 HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer gsdflkglñksñflg
-
+Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6InJvb3QiLCJpcCI6Ijo6MSIsInVybCI6Ii9sb2dpbi9sb2dpbiIsImlhdCI6MTY2NzIwNjM0MSwiZXhwIjoxNjcyMzkwMzQxfQ.n_QyxNSplPVo0uGzyfHidlCcMYwdGGjuXlktDeyYku8
 

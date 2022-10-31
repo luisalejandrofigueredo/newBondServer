@@ -5,6 +5,7 @@ import { nodeRouter } from "./routers/node";
 import { loginRouter } from "./routers/login";
 import {testRouter} from './test/test';
 import * as https from "https";
+import { logger } from "./utils/utils";
 
 import cors from 'cors'
 import dotenv from 'dotenv';
@@ -32,6 +33,15 @@ app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
 /**Comment this line for production */
 app.use('/test', testRouter);
+app.use(function(err, req, res, next) {
+
+  // error handling logic
+  logger.info(`Error from IP ${req.ip}`);
+  logger.info(`Error ${err.stack}`);
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+
+});
 /*https.createServer({key:'',cert:''},app)*/
 
 
