@@ -11,9 +11,9 @@ const testRouter = express.Router();
 testRouter.post('/addUser', async (req: Request, res: Response) => {
     try {
       let user =new User();
-      user.login='root'
-      user.password=await bcrypt.hash('root',10);
-      user.name='Luis';
+      user.login='luis'
+      user.password=await bcrypt.hash('LuisAlejandro2000!',10);
+      user.name='Luis Alejandro';
       user.try=0;
       await AppDataSource.manager.save(user).then((response)=>{
         res.status(200).json(response);

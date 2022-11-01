@@ -54,7 +54,7 @@ loginRouter.post('/login', async (req: Request, res: Response) => {
         }
     } catch (error) {
         logger.info(`Internal server error in login`,error);
-        res.status(500).json({ status: "Internal server error" });
+        res.status(500).json({ message: "Internal server error" });
     }
 });
 
