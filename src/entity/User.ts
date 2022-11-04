@@ -6,13 +6,13 @@ export class User {
     id: number
     @Column()
     name: string
-    @Column()
-    login: string
-    @Column()
+    @Column({nullable: true})
+    login:  string
+    @Column({nullable: true})
     password: string
-    @Column()
+    @Column({default:0})
     try: number
 
-    @OneToMany(() => Project, (project) => project.project)
+    @OneToMany(() => Project, (project) => project.user)
     project: Project[]
 }

@@ -3,6 +3,7 @@ import { AppDataSource } from "./data-source"
 import express, { Express, Request, Response } from 'express';
 import { nodeRouter } from "./routers/node";
 import { loginRouter } from "./routers/login";
+import { projectRouter } from "./routers/projects";
 import {testRouter} from './test/test';
 import * as https from "https";
 import { logger } from "./utils/utils";
@@ -31,6 +32,7 @@ app.use(express.json());
 app.use(cors({ origin: '*' }));
 app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
+app.use('/project', projectRouter);
 /**Comment this line for production */
 app.use('/test', testRouter);
 app.use(function(err, req, res, next) {

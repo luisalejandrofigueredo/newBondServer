@@ -70,3 +70,38 @@
     at IncomingMessage.emit (events.js:412:35)
     at IncomingMessage.emit (domain.js:470:12)
     at endReadableNT (internal/streams/readable.js:1317:12)
+[2022-11-01T20:03:54.092Z] Winston info: Possible hacker attack in login ::1 bad login luisfigu2000@yahoo.com
+[2022-11-01T20:10:31.916Z] Winston info: Possible hacker attack in login ::1 bad login luis
+[2022-11-01T20:10:38.058Z] Winston info: Possible hacker attack in login ::1 bad login luis
+[2022-11-01T20:11:09.588Z] Winston info: Possible hacker attack in login ::1 bad login luis
+[2022-11-02T12:01:53.999Z] Winston info: Possible hacker attack in login ::1 bad login luisfigu2000@yahoo.com
+[2022-11-02T12:01:59.528Z] Winston info: Possible hacker attack in login ::1 bad login luisfigu2000@yahoo.com
+[2022-11-02T12:05:41.427Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T12:11:21.367Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T12:21:15.037Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T12:58:59.934Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T12:59:16.668Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T12:59:32.203Z] Winston info: Possible hacker attack in login ::1 bad password for  
+[2022-11-02T13:08:30.246Z] Winston info: User disabled max login ::1 b
+[2022-11-02T13:11:50.131Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:06:36.512Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:06:40.106Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:13:06.069Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:21:08.953Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:36:13.744Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:38:51.128Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:40:13.786Z] Winston info: User disabled max login ::1 b
+[2022-11-02T14:46:24.350Z] Winston info: User disabled max login ::1 b
+[2022-11-02T16:32:36.710Z] Winston info: Internal server error in login No metadata for "User" was found.
+[2022-11-02T16:42:39.808Z] Winston info: User disabled max login ::1 b
+[2022-11-02T16:42:46.783Z] Winston info: User disabled max login ::1 b
+[2022-11-02T17:33:50.812Z] Winston info: Possible hacker attack in login ::1 bad password for  luis
+[2022-11-02T17:34:09.118Z] Winston info: Possible hacker attack in login ::1 bad password for  luis
+[2022-11-04T13:14:08.814Z] Winston info: Possible hacker attack in login ::1 bad login root
+[2022-11-04T13:15:32.977Z] Winston info: Possible hacker attack in login ::1 bad password for  luis
+[2022-11-04T13:17:34.574Z] Winston info: Possible hacker attack in login ::1 bad password for  luis
+[2022-11-04T13:22:08.305Z] Winston info: Possible hacker attack in login ::1 bad password for  luis
+[2022-11-04T13:29:24.528Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T13:31:09.035Z] Winston info: Authorization error invalid token
+[2022-11-04T13:31:50.016Z] Winston info: Authorization error jwt must be provided
+[2022-11-04T16:52:30.399Z] Winston info: Possible hacker attack in login ::1 bad login login

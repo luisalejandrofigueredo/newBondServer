@@ -13,6 +13,6 @@ export class Project {
     description:string
 
     @ManyToOne(() => User, (user) => user.project)
-    project:Project
+    user:User
 
 }

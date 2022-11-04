@@ -113,6 +113,4 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       res.status(500).json({ status: "Internal server error" });
     }
   });
-  
-
   export { nodeRouter};

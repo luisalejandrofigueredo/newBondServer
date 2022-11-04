@@ -32,7 +32,7 @@ export class Node {
     @OneToMany(() => Relation, (relation) => relation.to) 
     relationsTo: Relation[]
 
-    @ManyToOne(()=> Project,(project)=>project.project)
+    @ManyToOne(()=> Project,(project)=>project.id)
     project:Project
 
 }
