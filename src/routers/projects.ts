@@ -69,9 +69,14 @@ projectRouter.use((req:Request, res:Response, next)=>{
         project.name=name;
         project.description=description;
         project.user=user;
-        projectRepository.save(project);
-        res.status(200).json(project); 
-        return;
+        projectRepository.save(project).then((newProject)=>{
+          res.status(200).json(newProject);
+          return;
+        }).catch((error)=>{
+          res.status(200).json({ message:"Duplicate value"});
+          return;
+        });
+        
       
     } catch (error) {
     }

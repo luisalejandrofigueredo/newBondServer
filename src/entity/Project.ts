@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index, ManyToOne } from "typeorm"
 import { User } from "./User";
 @Entity()
+@Index(["name","user"],{unique:true})
 export class Project {
     @PrimaryGeneratedColumn()
     id: number
@@ -16,3 +17,4 @@ export class Project {
     user:User
 
 }
+
