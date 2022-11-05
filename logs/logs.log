@@ -105,3 +105,12 @@
 [2022-11-04T13:31:09.035Z] Winston info: Authorization error invalid token
 [2022-11-04T13:31:50.016Z] Winston info: Authorization error jwt must be provided
 [2022-11-04T16:52:30.399Z] Winston info: Possible hacker attack in login ::1 bad login login
+[2022-11-04T21:30:21.401Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:33:07.886Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:36:15.832Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:36:52.195Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:37:13.406Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:44:13.188Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:45:51.457Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:46:26.362Z] Winston info: Request without token in node possible hacker attack
+[2022-11-04T21:46:35.709Z] Winston info: Request without token in node possible hacker attack

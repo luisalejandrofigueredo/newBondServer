@@ -43,7 +43,9 @@ projectRouter.use((req:Request, res:Response, next)=>{
     const id = parseInt(decodeURI(<string>req.query.id));
     try {
       const projectRepository=AppDataSource.getRepository(Project);
-      const projects=await projectRepository.find({relations:{user:true},where:{user:{id:id}}});
+      const projects=await projectRepository.find({
+        select:{id:true,description:true,name:true} ,
+        where:{user:{id:id}}});
       res.status(200).json(projects); 
     } catch (error) {
     }
