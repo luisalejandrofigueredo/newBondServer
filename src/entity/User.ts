@@ -13,6 +13,6 @@ export class User {
     @Column({default:0})
     try: number
 
-    @OneToMany(() => Project, (project) => project.user)
+    @OneToMany(() => Project, (project) => project.user,{cascade:true})
     project: Project[]
 }

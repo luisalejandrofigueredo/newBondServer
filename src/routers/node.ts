@@ -1,5 +1,5 @@
 import yargs, { describe, options } from 'yargs'
-import express, { NextFunction, Request, Response } from 'express';
+import express, {  Request, Response } from 'express';
 import { argv } from 'node:process';
 import moment from '../../node_modules/moment/moment';
 import { AppDataSource } from "../data-source";
@@ -59,9 +59,9 @@ nodeRouter.use((req:Request, _res:Response, next) => {
   });
 
   nodeRouter.post('/add', async (req: Request, res: Response) => {
+    const {name,net,description,visible,x,y}=req.body.data
     try {
       let node =new Node();
-      const {name,net,description,visible,x,y}=req.body.data
       node.name=name;
       node.net=net;
       node.description=description;

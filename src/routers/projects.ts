@@ -28,8 +28,7 @@ projectRouter.use((req:Request, res:Response, next)=>{
     {
       logger.info(`Request without token in node possible hacker attack`);
       return res.sendStatus(401)  
-    } 
-
+    }
     jwt.verify(token, privateKey, (err: any, data: any) => {
       if (err){
        logger.info(`Authorization error`,err);
@@ -37,6 +36,55 @@ projectRouter.use((req:Request, res:Response, next)=>{
       }
       next()
     })
+  });
+
+  projectRouter.delete('/delete',async (req:Request,res:Response)=>{
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const projectRepository=AppDataSource.getRepository(Project);
+      const projects=await projectRepository.delete({id:id});
+      res.status(200).json(projects);
+    } catch (error) {
+    }
+  });
+
+
+  projectRouter.put('/put',async (req:Request,res:Response)=>{
+    if(req.body.data===undefined){
+        res.status(400).json({message:'Bad formed put'});
+        return;
+    }
+    const {id,name,description}=req.body.data
+    try {
+        if(id===undefined || name===undefined || description===undefined){
+            res.status(400).json({message:'Bad formed put'});
+            return;
+        }
+        const projectRepository=AppDataSource.getRepository(Project);
+        const project=await projectRepository.findOne({where:{id:id}});
+        project.name=name;
+        project.description=description;
+        projectRepository.save(project).then((project)=>{
+          res.status(200).json(project);
+          return;
+        }).catch((error)=>{
+          res.status(200).json({ message:"Duplicate value"});
+          return;
+        });
+    } catch (error) {
+    }
+  });
+
+  projectRouter.get('/getOne',async (req:Request,res:Response)=>{
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const projectRepository=AppDataSource.getRepository(Project);
+      const projects=await projectRepository.findOne({
+        select:{id:true,description:true,name:true} ,
+        where:{id:id}});
+      res.status(200).json(projects); 
+    } catch (error) {
+    }
   });
 
   projectRouter.get('/getAll',async (req:Request,res:Response)=>{
@@ -79,5 +127,4 @@ projectRouter.use((req:Request, res:Response, next)=>{
     } catch (error) {
     }
   });
-
   export {projectRouter}
