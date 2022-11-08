@@ -7,6 +7,7 @@ import { Node } from "../entity/Node";
 import { logger } from "../utils/utils";
 import fs from 'fs';
 import * as jwt from 'jsonwebtoken';
+import { Project } from '../entity/Project';
 
 const nodeRouter = express.Router();
 var privateKey = fs.readFileSync('config/private.key');
@@ -54,12 +55,13 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       });
     } catch (error) {
       logger.info(`Internal server error in node update`,error);
-      res.status(500).json({ status: "Internal server error" });
+      res.status(500).json({ message: "Internal server error" });
     }
   });
 
   nodeRouter.post('/add', async (req: Request, res: Response) => {
     const {name,net,description,visible,x,y}=req.body.data
+    const {id}=req.body
     try {
       let node =new Node();
       node.name=name;
@@ -68,6 +70,9 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       node.visible=visible;
       node.x=x;
       node.y=y;
+      const projectRepository=AppDataSource.getRepository(Project);
+      const project=await projectRepository.findOneBy({id:id});
+      node.project=project;
       await AppDataSource.manager.save(node).then((response)=>{
         res.status(200).json(response);
       });
@@ -90,9 +95,10 @@ nodeRouter.use((req:Request, _res:Response, next) => {
   });
 
   nodeRouter.get('/getAll', async (req: Request, res: Response) => {
+    const id=parseInt(decodeURI(<string>req.query.id));
     try {
       const nodeRepository=AppDataSource.getRepository(Node);
-      const node=await nodeRepository.find();
+      const node=await nodeRepository.find({ where:{project:{id:id}}});
       res.status(200).json(node);
     } catch (error) {
       logger.info(`Internal server error in node getAll`,error);
