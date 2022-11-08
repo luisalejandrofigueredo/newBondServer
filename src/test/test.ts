@@ -11,7 +11,7 @@ const testRouter = express.Router();
 testRouter.post('/addUser', async (req: Request, res: Response) => {
     try {
       let user =new User();
-      user.login='luis'
+      user.login='alejandro'
       user.password=await bcrypt.hash('LuisAlejandro2000!',10);
       user.name='Luis Alejandro';
       user.try=0;
