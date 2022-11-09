@@ -82,15 +82,19 @@ nodeRouter.use((req:Request, _res:Response, next) => {
     }
    });
 
-   nodeRouter.get('/getOneById', async (req: Request, res: Response) => {
+   nodeRouter.get('/getOne', async (req: Request, res: Response) => {
     const id = parseInt(decodeURI(<string>req.query.id));
+    const nid = parseInt(decodeURI(<string>req.query.nid));
     try {
       const nodeRepository=AppDataSource.getRepository(Node);
-      const node=await nodeRepository.findOneBy({id:id});
-      res.status(200).json(node);
+      const node=await nodeRepository.findOne({where:{id:nid,project:{id:id}}})
+      if (node!==null){
+        res.status(200).json(node);
+      } else {
+        res.status(200).json({})
+      }
     } catch (error) {
-      logger.info(`Internal server error in node getOneById`,error);
-      res.status(500).json({ status: "Internal server error" });
+      res.status(500).json({ message: "Internal server error" });
     }
   });
 
@@ -102,7 +106,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       res.status(200).json(node);
     } catch (error) {
       logger.info(`Internal server error in node getAll`,error);
-      res.status(500).json({ status: "Internal server error" });
+      res.status(500).json({ message: "Internal server error" });
     }
   });
 
@@ -116,7 +120,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       })
     } catch (error) {
       logger.info(`Internal server error in node delete`,error);
-      res.status(500).json({ status: "Internal server error" });
+      res.status(500).json({ message: "Internal server error" });
     }
   });
   export { nodeRouter};
