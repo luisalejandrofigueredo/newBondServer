@@ -126,3 +126,13 @@
 [2022-11-08T20:24:12.435Z] Winston info: Request without token in node possible hacker attack
 [2022-11-08T20:25:11.379Z] Winston info: Request without token in node possible hacker attack
 [2022-11-08T20:32:51.095Z] Winston info: Internal server error in node add No metadata for "Node" was found.
+[2022-11-09T23:27:19.860Z] Winston info: Request without token in node possible hacker attack
+[2022-11-09T23:29:35.086Z] Winston info: Request without token in node possible hacker attack
+[2022-11-09T23:33:18.741Z] Winston info: Request without token in node possible hacker attack
+[2022-11-09T23:33:49.168Z] Winston info: Request without token in node possible hacker attack
+[2022-11-09T23:53:54.693Z] Winston info: Internal server error in node update Cannot read properties of undefined (reading 'id')
+[2022-11-09T23:55:23.458Z] Winston info: Internal server error in node update Cannot read properties of undefined (reading 'id')
+[2022-11-09T23:58:26.448Z] Winston info: Internal server error in node update Cannot read properties of undefined (reading 'id')
+[2022-11-09T23:59:14.102Z] Winston info: Internal server error in node update Cannot read properties of undefined (reading 'id')
+[2022-11-10T00:07:02.467Z] Winston info: Internal server error in node update Cannot set properties of null (setting 'name')
+[2022-11-10T00:07:17.006Z] Winston info: Internal server error in node update Cannot set properties of null (setting 'name')

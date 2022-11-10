@@ -39,9 +39,8 @@ nodeRouter.use((req:Request, _res:Response, next) => {
   });
 
   nodeRouter.put('/update', async (req: Request, res: Response) => {
-    const id = parseInt(decodeURI(<string>req.query.id));
     try {
-      const {name,net,description,visible,x,y}=req.body.data
+      const {id,name,net,description,visible,x,y}=req.body.data;
       const nodeRepository=AppDataSource.getRepository(Node);
       const node=await nodeRepository.findOneBy({id:id});
       node.name=name;
