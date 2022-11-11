@@ -12,6 +12,7 @@ import cors from 'cors'
 import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
+import { relationsRouter } from './routers/relations';
 
 
 
@@ -33,6 +34,7 @@ app.use(cors({ origin: '*' }));
 app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
 app.use('/project', projectRouter);
+app.use('/relations',relationsRouter);
 /**Comment this line for production */
 app.use('/test', testRouter);
 app.use(function(err, req, res, next) {
@@ -42,7 +44,6 @@ app.use(function(err, req, res, next) {
   logger.info(`Error ${err.stack}`);
   console.error(err.stack);
   res.status(500).send('Something broke!');
-
 });
 /*https.createServer({key:'',cert:''},app)*/
 

@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, Index, ManyToOne } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, Index, ManyToOne, OneToMany } from "typeorm"
 import { User } from "./User";
+import { Relation } from "./Relation";
 @Entity()
 @Index(["name","user"],{unique:true})
 export class Project {
@@ -15,6 +16,9 @@ export class Project {
 
     @ManyToOne(() => User, (user) => user.project,{onDelete:"CASCADE"})
     user:User
+
+    @OneToMany(()=> Relation, (relation) =>relation)
+    relations:Relation[]
 
 }
 
