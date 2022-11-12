@@ -46,7 +46,6 @@ relationsRouter.use((req:Request, res:Response, next)=>{
       const relationsRepository=AppDataSource.getRepository(Relation);
       const projects=await relationsRepository.find({
         relations:{from:true,to:true},
-        select:{id:true,description:true} ,
         where:{project:{id:id}}});
       res.status(200).json(projects); 
     } catch (error) {
