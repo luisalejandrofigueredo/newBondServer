@@ -6,7 +6,10 @@ import { Project } from "./Project";
 export class Relation {
     @PrimaryGeneratedColumn()
     id: number
+    @Index()
+    @Column()
     name:string
+    @Column()
     description:string
     @ManyToOne(() => Node, (node) => node.relationsFrom)
     from: Node

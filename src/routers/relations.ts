@@ -90,7 +90,18 @@ relationsRouter.use((req:Request, res:Response, next)=>{
         nodeTo.y=to.y;
         const relationRepository=AppDataSource.getRepository(Relation);
         let relation=new Relation()
-        nodeRepository.save(relation).then((newRelation)=>{
+        relation.name=name;
+        relation.description=description;
+        relation.to=nodeTo;
+        relation.from=nodeFrom;
+        let projectSave=new Project();
+        projectSave.id=project.id;
+        projectSave.name=project.name;
+        projectSave.description=project.description;
+        projectSave.relations=project.relations;
+        projectSave.user=project.user;
+        relation.project=projectSave;
+        relationRepository.save(relation).then((newRelation)=>{
           res.status(200).json(newRelation);
           return;
         }).catch((error)=>{
