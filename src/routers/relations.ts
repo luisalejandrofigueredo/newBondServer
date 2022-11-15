@@ -41,14 +41,27 @@ relationsRouter.use((req:Request, res:Response, next)=>{
   });
 
 
+  relationsRouter.get('/getOne',async (req:Request,res:Response)=>{
+    const id = parseInt(decodeURI(<string>req.query.id));
+    try {
+      const relationsRepository=AppDataSource.getRepository(Relation);
+      const relation=await relationsRepository.findOne({
+        relations:{from:true,to:true},
+        where:{id:id}});
+      res.status(200).json(relation); 
+    } catch (error) {
+    }
+  });
+
+
   relationsRouter.get('/getAll',async (req:Request,res:Response)=>{
     const id = parseInt(decodeURI(<string>req.query.id));
     try {
       const relationsRepository=AppDataSource.getRepository(Relation);
-      const projects=await relationsRepository.find({
+      const relations=await relationsRepository.find({
         relations:{from:true,to:true},
         where:{project:{id:id}}});
-      res.status(200).json(projects); 
+      res.status(200).json(relations); 
     } catch (error) {
     }
   });
@@ -111,5 +124,8 @@ relationsRouter.use((req:Request, res:Response, next)=>{
     } catch (error) {
     }
   });
+
+
+
 
 export {relationsRouter}
