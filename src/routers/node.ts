@@ -81,6 +81,22 @@ nodeRouter.use((req:Request, _res:Response, next) => {
     }
    });
 
+   nodeRouter.get('/getOneByName', async (req: Request, res: Response) => {
+    const id = parseInt(decodeURI(<string>req.query.id));
+    const name = decodeURI(<string>req.query.name);
+    try {
+      const nodeRepository=AppDataSource.getRepository(Node);
+      const node=await nodeRepository.findOne({where:{name:name,project:{id:id}}})
+      if (node!==null){
+        res.status(200).json(node);
+      } else {
+        res.status(200).json({})
+      }
+    } catch (error) {
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+
    nodeRouter.get('/getOne', async (req: Request, res: Response) => {
     const id = parseInt(decodeURI(<string>req.query.id));
     const nid = parseInt(decodeURI(<string>req.query.nid));
