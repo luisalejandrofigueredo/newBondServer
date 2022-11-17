@@ -15,6 +15,9 @@ export class Node {
     description: string
 
     @Column()
+    color: string
+
+    @Column()
     x: number
 
     @Column()

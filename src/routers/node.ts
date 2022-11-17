@@ -40,7 +40,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
 
   nodeRouter.put('/update', async (req: Request, res: Response) => {
     try {
-      const {id,name,net,description,visible,x,y}=req.body.data;
+      const {id,name,net,description,visible,x,y,color}=req.body.data;
       const nodeRepository=AppDataSource.getRepository(Node);
       const node=await nodeRepository.findOneBy({id:id});
       node.name=name;
@@ -49,6 +49,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       node.visible=visible;
       node.x=x;
       node.y=y;
+      node.color=color;
       nodeRepository.save(node).then((updateNode)=>{
         res.status(200).json(updateNode);
       });
@@ -59,7 +60,8 @@ nodeRouter.use((req:Request, _res:Response, next) => {
   });
 
   nodeRouter.post('/add', async (req: Request, res: Response) => {
-    const {name,net,description,visible,x,y}=req.body.data
+    const {name,net,description,visible,x,y,color}=req.body.data
+    console.log('body',req.body.data);
     const {id}=req.body
     try {
       let node =new Node();
@@ -69,6 +71,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
       node.visible=visible;
       node.x=x;
       node.y=y;
+      node.color=color;
       const projectRepository=AppDataSource.getRepository(Project);
       const project=await projectRepository.findOneBy({id:id});
       node.project=project;
