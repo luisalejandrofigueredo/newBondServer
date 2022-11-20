@@ -13,6 +13,7 @@ import dotenv from 'dotenv';
 import bcrypt from 'bcrypt';
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import { relationsRouter } from './routers/relations';
+import { eventsConRouter } from "./routers/eventsCon";
 
 
 
@@ -35,6 +36,7 @@ app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
 app.use('/project', projectRouter);
 app.use('/relations',relationsRouter);
+app.use('/eventsCon',eventsConRouter)
 /**Comment this line for production */
 app.use('/test', testRouter);
 app.use(function(err, req, res, next) {

@@ -9,3 +9,9 @@
 [2022-11-16T21:02:43.753Z] Winston info: Internal server error in node add ER_BAD_FIELD_ERROR: Unknown column 'r' in 'field list'
 [2022-11-16T21:08:55.951Z] Winston info: Internal server error in node add ER_BAD_FIELD_ERROR: Unknown column 'r' in 'field list'
 [2022-11-16T21:16:25.294Z] Winston info: Internal server error in node add ER_BAD_FIELD_ERROR: Unknown column 'r' in 'field list'
+[2022-11-18T17:27:35.425Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-11-18T17:32:10.740Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-11-18T20:36:45.034Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-11-20T01:29:57.666Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-11-20T01:33:59.488Z] Winston info: Request without token in node possible hacker attack
+[2022-11-20T01:34:10.647Z] Winston info: Request without token in node possible hacker attack

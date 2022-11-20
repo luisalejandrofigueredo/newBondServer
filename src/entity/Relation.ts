@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Index } from "typeorm"
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, Index, OneToMany } from "typeorm"
 import { Node } from './Node';
 import { Project } from "./Project";
+import { eventCon } from "./eventsCon";
 @Index(["from", "to"], { unique: true })
 @Entity()
 export class Relation {
@@ -19,5 +20,8 @@ export class Relation {
 
     @ManyToOne(()=>Project, (project) =>project.relations)
     project:Project
+
+    @OneToMany(()=>eventCon, (eventCone) =>eventCone.relation,{cascade:true})
+    eventCones:eventCon[]
 
 }

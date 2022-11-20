@@ -75,7 +75,7 @@ relationsRouter.use((req:Request, res:Response, next)=>{
       const relations=await relationsRepository.find({
         relations:{from:true,to:true},
         where:{project:{id:id}}});
-      res.status(200).json(relations); 
+      res.status(200).json(relations);   
     } catch (error) {
     }
   });
@@ -158,8 +158,4 @@ relationsRouter.use((req:Request, res:Response, next)=>{
     } catch (error) {
     }
   });
-
-
-
-
 export {relationsRouter}
