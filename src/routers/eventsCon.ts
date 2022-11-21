@@ -37,6 +37,46 @@ eventsConRouter.use((req: Request, res: Response, next) => {
   })
 });
 
+eventsConRouter.delete('/delete', async (req: Request, res: Response) => {
+  const id = parseInt(decodeURI(<string>req.query.id));
+  try {
+    const eventConRepository = AppDataSource.getRepository(eventCon);
+    const eventConRegister = await eventConRepository.findOne({
+      where: { id: id }
+    });
+    eventConRepository.remove(eventConRegister);
+    res.status(200).json(eventConRegister);
+  } catch (error) {
+  }
+});
+
+eventsConRouter.put('/put', async (req: Request, res: Response) => {
+  const { id, name, date, description } = req.body.data as eventCon
+  try {
+    const eventConRepository = AppDataSource.getRepository(eventCon);
+    let eventConRegister = await eventConRepository.findOne({ where: { id: id } });
+    eventConRegister.name = name;
+    eventConRegister.description = description;
+    eventConRegister.date = date;
+    await eventConRepository.save(eventConRegister);
+    res.status(200).json(eventConRegister);
+  } catch (error) {
+  }
+});
+
+eventsConRouter.get('/getOne', async (req: Request, res: Response) => {
+  const id = parseInt(decodeURI(<string>req.query.id));
+  try {
+    const eventConRepository = AppDataSource.getRepository(eventCon);
+    const eventConRegister = await eventConRepository.findOne({
+      where: { id: id }
+    });
+    console.log('Register:', eventConRegister)
+    res.status(200).json(eventConRegister);
+  } catch (error) {
+  }
+});
+
 
 eventsConRouter.get('/getAll', async (req: Request, res: Response) => {
   const id = parseInt(decodeURI(<string>req.query.id));
@@ -44,7 +84,7 @@ eventsConRouter.get('/getAll', async (req: Request, res: Response) => {
     const relationsRepository = AppDataSource.getRepository(Relation);
     const relations = await relationsRepository.findOne({
       relations: { eventCones: true },
-      where: { id:id  }
+      where: { id: id }
     });
     res.status(200).json(relations);
   } catch (error) {
@@ -52,31 +92,32 @@ eventsConRouter.get('/getAll', async (req: Request, res: Response) => {
 });
 
 eventsConRouter.post('/add', async (req: Request, res: Response) => {
-  const id:number=req.body.id
+  const id: number = req.body.id
   if (req.body.data === undefined) {
     res.status(400).json({ message: 'Bad formed post' });
     return;
   }
-  const { name, description } = req.body.data as eventCon
+  const { name, description, date } = req.body.data as eventCon
   try {
     if (name === undefined || description === undefined) {
       res.status(400).json({ message: 'Bad formed post' });
       return;
     }
-    const relationRepository= AppDataSource.getRepository(Relation);
-    await relationRepository.findOne({where:{id:id}}).then((relation)=>{
+    const relationRepository = AppDataSource.getRepository(Relation);
+    await relationRepository.findOne({ where: { id: id } }).then((relation) => {
       const eventConRepository = AppDataSource.getRepository(eventCon);
       let eventConnection = new eventCon();
-      eventConnection.name=name;
-      eventConnection.description=description;
-      eventConnection.relation=relation
-      eventConRepository.save(eventConnection).then((saved)=>{
+      eventConnection.name = name;
+      eventConnection.description = description;
+      eventConnection.date = date;
+      eventConnection.relation = relation
+      eventConRepository.save(eventConnection).then((saved) => {
         res.status(200).json(saved);
       });
     })
   } catch (error) {
-    
+
   }
 });
 
-export {eventsConRouter}
+export { eventsConRouter }

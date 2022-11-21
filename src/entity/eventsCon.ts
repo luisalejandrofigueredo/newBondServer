@@ -9,6 +9,8 @@ export class eventCon {
     name: string
     @Column()
     description: string
+    @Column({type:"datetime"})
+    date: Date
     @ManyToOne(() => Relation, (relation) => relation.eventCones)
     relation: Relation
 }
