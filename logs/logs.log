@@ -16,3 +16,4 @@
 [2022-11-20T01:33:59.488Z] Winston info: Request without token in node possible hacker attack
 [2022-11-20T01:34:10.647Z] Winston info: Request without token in node possible hacker attack
 [2022-11-21T09:37:17.858Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-11-21T20:56:02.318Z] Winston info: Possible hacker attack in login ::1 bad password for  alejandro
