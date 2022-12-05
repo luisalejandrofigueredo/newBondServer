@@ -82,13 +82,14 @@ relationsRouter.use((req:Request, res:Response, next)=>{
 
   relationsRouter.put('/update', async (req: Request, res: Response) => {
     try {
-      const {id,name,description,from,to}=req.body.data as Relation;
+      const {id,name,description,from,to,mirrorLabel}=req.body.data as Relation;
       const relationsRepository=AppDataSource.getRepository(Relation);
       const relation=await relationsRepository.findOneBy({id:id});
       relation.name=name;
       relation.description=description;
       relation.from=from;
       relation.to=to;
+      relation.mirrorLabel=mirrorLabel;
       relationsRepository.save(relation).then((updateRelation)=>{
         res.status(200).json(updateRelation);
       }).catch((error)=>{
@@ -139,6 +140,7 @@ relationsRouter.use((req:Request, res:Response, next)=>{
         let relation=new Relation()
         relation.name=name;
         relation.description=description;
+        relation.mirrorLabel=false;
         relation.to=nodeTo;
         relation.from=nodeFrom;
         let projectSave=new Project();

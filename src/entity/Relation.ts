@@ -12,6 +12,8 @@ export class Relation {
     name:string
     @Column()
     description:string
+    @Column()
+    mirrorLabel:boolean
     @ManyToOne(() => Node, (node) => node.relationsFrom)
     from: Node
 

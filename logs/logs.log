@@ -17,3 +17,16 @@
 [2022-11-20T01:34:10.647Z] Winston info: Request without token in node possible hacker attack
 [2022-11-21T09:37:17.858Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
 [2022-11-21T20:56:02.318Z] Winston info: Possible hacker attack in login ::1 bad password for  alejandro
+[2022-12-05T13:15:20.134Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.163Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.172Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.192Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.202Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.212Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.222Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.238Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.247Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:15:20.257Z] Winston info: Internal server error in node getAll ER_BAD_FIELD_ERROR: Unknown column 'Node.mirrorLabel' in 'field list'
+[2022-12-05T13:16:20.759Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-12-05T13:16:20.783Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-12-05T14:06:33.895Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.

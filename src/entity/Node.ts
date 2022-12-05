@@ -29,6 +29,7 @@ export class Node {
     @Column()
     net: boolean
 
+
     @OneToMany(() => Relation, (relation) => relation.from) 
     relationsFrom: Relation[]
 
