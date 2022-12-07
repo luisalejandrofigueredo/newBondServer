@@ -14,6 +14,10 @@ export class Relation {
     description:string
     @Column()
     mirrorLabel:boolean
+    @Column({default:10})
+    distance:number
+    @Column({default:10})
+    align:number
     @ManyToOne(() => Node, (node) => node.relationsFrom)
     from: Node
 
@@ -23,7 +27,7 @@ export class Relation {
     @ManyToOne(()=>Project, (project) =>project.relations)
     project:Project
 
-    @OneToMany(()=>eventCon, (eventCone) =>eventCone.relation,{cascade:true})
+    @OneToMany(()=>eventCon, (eventCone) =>eventCone.relation,{onDelete:"CASCADE"})
     eventCones:eventCon[]
 
 }

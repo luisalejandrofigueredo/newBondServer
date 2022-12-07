@@ -30,10 +30,10 @@ export class Node {
     net: boolean
 
 
-    @OneToMany(() => Relation, (relation) => relation.from) 
+    @OneToMany(() => Relation, (relation) => relation.from,{onDelete:"CASCADE"}) 
     relationsFrom: Relation[]
 
-    @OneToMany(() => Relation, (relation) => relation.to) 
+    @OneToMany(() => Relation, (relation) => relation.to,{onDelete:"CASCADE"}) 
     relationsTo: Relation[]
 
     @ManyToOne(()=> Project,(project)=>project.id)
