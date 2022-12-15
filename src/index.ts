@@ -14,6 +14,7 @@ import bcrypt from 'bcrypt';
 import jwt, { Secret, JwtPayload } from 'jsonwebtoken';
 import { relationsRouter } from './routers/relations';
 import { eventsConRouter } from "./routers/eventsCon";
+import { netNodeRouter } from "./routers/netNode";
 
 
 
@@ -36,7 +37,8 @@ app.use('/node', nodeRouter);
 app.use('/login', loginRouter);
 app.use('/project', projectRouter);
 app.use('/relations',relationsRouter);
-app.use('/eventsCon',eventsConRouter)
+app.use('/eventsCon',eventsConRouter);
+app.use('/netNode',netNodeRouter);
 /**Comment this line for production */
 app.use('/test', testRouter);
 app.use(function(err, req, res, next) {

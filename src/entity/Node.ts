@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany, Index, ManyToOne } from "typeorm"
 import { Relation } from "../entity/Relation";
+import { NetNode } from "./NetNode";
 import { Project } from "./Project";
 @Entity()
 export class Node {
@@ -28,7 +29,9 @@ export class Node {
 
     @Column()
     net: boolean
-
+    
+    @OneToMany(() => NetNode, (netNode) => netNode.node,{onDelete:"CASCADE"}) 
+    netNode:NetNode[]
 
     @OneToMany(() => Relation, (relation) => relation.from,{onDelete:"CASCADE"}) 
     relationsFrom: Relation[]

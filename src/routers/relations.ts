@@ -7,9 +7,9 @@ import { logger } from "../utils/utils";
 import { User } from '../entity/User';
 import { Project } from "../entity/Project";
 import { Relation } from "../entity/Relation";
+import { Node } from '../entity/Node';
 import * as jwt from 'jsonwebtoken';
 import fs from 'fs';
-import { Node } from '../entity/Node';
 const privateKey = fs.readFileSync('config/private.key');
 const relationsRouter = express.Router();
 
