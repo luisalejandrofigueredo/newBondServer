@@ -36,19 +36,32 @@ netNodeRouter.use((req: Request, res: Response, next) => {
     })
 });
 
+
+netNodeRouter.get('/getNode', async (req: Request, res: Response) => {
+    if (req.body.data === undefined) {
+        res.status(400).json({ message: 'Bad formed post' });
+        return;
+    };
+    const { id } = req.body.data;
+    const netNodeRepository = AppDataSource.getRepository(NetNode);
+    netNodeRepository.findOne({ where: { id: id } }).then((netNode) => {
+        res.status(200).json(netNode.node);
+    });
+});
+
 netNodeRouter.post('/add', async (req: Request, res: Response) => {
     if (req.body.data === undefined) {
         res.status(400).json({ message: 'Bad formed post' });
         return;
     };
     const { id } = req.body.data;
-    console.log('Console',id);
     const nodeRepository = AppDataSource.getRepository(Node);
     const netNodeRepository = AppDataSource.getRepository(NetNode);
     let netNode = new NetNode();
     nodeRepository.findOne({ where: { id: id } }).then((node) => {
         netNode.node = node;
         netNodeRepository.save(netNode);
+        res.status(200).json(netNode);
     });
 });
 
