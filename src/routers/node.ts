@@ -106,6 +106,7 @@ nodeRouter.use((req:Request, _res:Response, next) => {
     try {
       const nodeRepository=AppDataSource.getRepository(Node);
       const node=await nodeRepository.findOne({where:{id:nid,project:{id:id}},relations:{netNode:true}});
+      console.log('Node',node);
       if (node!==null){
         res.status(200).json(node.netNode);
       } else {

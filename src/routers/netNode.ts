@@ -38,11 +38,7 @@ netNodeRouter.use((req: Request, res: Response, next) => {
 
 
 netNodeRouter.get('/getNode', async (req: Request, res: Response) => {
-    if (req.body.data === undefined) {
-        res.status(400).json({ message: 'Bad formed post' });
-        return;
-    };
-    const { id } = req.body.data;
+    const id = parseInt(decodeURI(<string>req.query.id));
     const netNodeRepository = AppDataSource.getRepository(NetNode);
     netNodeRepository.findOne({ where: { id: id } }).then((netNode) => {
         res.status(200).json(netNode.node);
@@ -58,10 +54,15 @@ netNodeRouter.post('/add', async (req: Request, res: Response) => {
     const nodeRepository = AppDataSource.getRepository(Node);
     const netNodeRepository = AppDataSource.getRepository(NetNode);
     let netNode = new NetNode();
-    nodeRepository.findOne({ where: { id: id } }).then((node) => {
-        netNode.node = node;
-        netNodeRepository.save(netNode);
-        res.status(200).json(netNode);
+    nodeRepository.findOne({ where: { id: id },relations:{netNode:true} }).then(async (node) => {
+        await netNodeRepository.save(netNode).then(async (sNetNode)=>{
+            if (node.netNode===null){
+                node.netNode= new Array<NetNode>();
+            }
+            node.netNode.push(sNetNode);
+            await nodeRepository.save(node);
+            res.status(200).json(sNetNode);
+        });
     });
 });
 
