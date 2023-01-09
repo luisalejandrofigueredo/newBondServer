@@ -4,6 +4,8 @@ import { Node } from "../entity/Node";
 export class NetNode {
     @PrimaryGeneratedColumn()
     id: number
-    @ManyToOne(()=> Node,(node)=>node.netNode)
-    node:Node
+    @ManyToOne(()=> Node,(node)=>node.netNodes)
+    netNode:Node
+    @ManyToOne(()=> Node,(nodeChildren)=>nodeChildren.netNodes)
+    nodeChildren:Node
 }

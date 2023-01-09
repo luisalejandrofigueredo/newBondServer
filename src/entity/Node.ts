@@ -30,8 +30,11 @@ export class Node {
     @Column()
     net: boolean
     
-    @OneToMany(() => NetNode, (netNode) => netNode.node,{onDelete:"CASCADE"}) 
-    netNode:NetNode[]
+    @OneToMany(() => NetNode, (netNode) => netNode.netNode,{onDelete:"CASCADE"}) 
+    netNodes:NetNode[]
+
+    @OneToMany(() => NetNode, (netNode) => netNode.nodeChildren,{onDelete:"CASCADE"}) 
+    children_s:NetNode[]
 
     @OneToMany(() => Relation, (relation) => relation.from,{onDelete:"CASCADE"}) 
     relationsFrom: Relation[]

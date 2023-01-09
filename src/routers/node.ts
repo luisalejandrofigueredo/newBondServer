@@ -102,13 +102,12 @@ nodeRouter.use((req:Request, _res:Response, next) => {
 
   nodeRouter.get('/getChildren_s', async (req: Request, res: Response) => {
     const id = parseInt(decodeURI(<string>req.query.id));
-    const nid = parseInt(decodeURI(<string>req.query.nid));
     try {
       const nodeRepository=AppDataSource.getRepository(Node);
-      const node=await nodeRepository.findOne({where:{id:nid,project:{id:id}},relations:{netNode:true}});
-      console.log('Node',node);
+      const node=await nodeRepository.findOne({where:{id:id},relations:{netNodes:true}});
       if (node!==null){
-        res.status(200).json(node.netNode);
+        console.log('node',node);
+        res.status(200).json(node.netNodes);
       } else {
         res.status(200).json({})
       }

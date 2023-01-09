@@ -57,3 +57,34 @@
 [2022-12-09T00:23:19.302Z] Winston info: Internal server error in node add ER_NO_DEFAULT_FOR_FIELD: Field 'name' doesn't have a default value
 [2022-12-16T01:41:09.141Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
 [2022-12-16T01:41:09.166Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2022-12-19T18:59:34.691Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:34.715Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:34.724Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:34.734Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.130Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.173Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.196Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.243Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.284Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.416Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T18:59:35.546Z] Winston info: Internal server error in node getAll ER_NO_SUCH_TABLE: Table 'test.node' doesn't exist
+[2022-12-19T19:00:45.283Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:45.426Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:45.570Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:45.588Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:45.869Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.006Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.024Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.055Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.644Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.685Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.725Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.750Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.767Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:46.779Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:00:59.873Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:01:05.478Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:01:05.486Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2022-12-19T19:01:05.500Z] Winston info: Internal server error in node getAll Connection is not established with mysql database
+[2023-01-09T12:03:16.975Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.
+[2023-01-09T12:03:16.993Z] Winston info: Internal server error in node getAll No metadata for "Node" was found.

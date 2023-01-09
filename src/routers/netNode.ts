@@ -37,11 +37,11 @@ netNodeRouter.use((req: Request, res: Response, next) => {
 });
 
 
-netNodeRouter.get('/getNode', async (req: Request, res: Response) => {
+netNodeRouter.get('/getNetNode', async (req: Request, res: Response) => {
     const id = parseInt(decodeURI(<string>req.query.id));
     const netNodeRepository = AppDataSource.getRepository(NetNode);
-    netNodeRepository.findOne({ where: { id: id } }).then((netNode) => {
-        res.status(200).json(netNode.node);
+    netNodeRepository.findOne({ where: { id: id },relations:{netNode:true,nodeChildren:true} }).then((netNode) => {
+        res.status(200).json(netNode);
     });
 });
 
@@ -50,17 +50,24 @@ netNodeRouter.post('/add', async (req: Request, res: Response) => {
         res.status(400).json({ message: 'Bad formed post' });
         return;
     };
-    const { id } = req.body.data;
+    const { id, toId } = req.body.data;
     const nodeRepository = AppDataSource.getRepository(Node);
     const netNodeRepository = AppDataSource.getRepository(NetNode);
     let netNode = new NetNode();
-    nodeRepository.findOne({ where: { id: id },relations:{netNode:true} }).then(async (node) => {
-        await netNodeRepository.save(netNode).then(async (sNetNode)=>{
-            if (node.netNode===null){
-                node.netNode= new Array<NetNode>();
+    await nodeRepository.findOne({ where: { id: toId } }).then(async (toNode) => {
+        netNode.nodeChildren=toNode
+        await nodeRepository.findOne({ where: { id: id } }).then(async (node) => {
+            netNode.netNode = node;
+        })
+    })
+    await nodeRepository.findOne({ where: { id: id }, relations: { netNodes: true } }).then(async (node) => {
+        await netNodeRepository.save(netNode).then(async (sNetNode) => {
+            if (node.netNodes === null) {
+                node.netNodes = new Array<NetNode>();
             }
-            node.netNode.push(sNetNode);
-            await nodeRepository.save(node);
+            node.netNodes.push(sNetNode);
+            await nodeRepository.save(node).then((sNode) => {
+            });
             res.status(200).json(sNetNode);
         });
     });
